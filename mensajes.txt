@@ -1,0 +1,42 @@
+Regular data is sent on counter change through the port 1 
+the format is:
+CounterH CounterL MaxValueH MaxValueL
+Example, if the current counter is 300 and the max value is 350:
+0x01 0x2C 0x01 0x5E
+
+This is: Counter = 0x012C = 300
+Max value = 0x015E = 350
+
+Remote commands use port 4
+Set current counter
+0xA0 CounterH CounterL
+Response 
+0xA0 CounterH CounterL
+0xa0 0x0028
+
+para poner 51 plazas max: 51 dec es 33 hex... a0 00 33....oAAz
+
+Set max value
+0xA1 MaxValueH MaxValueL
+Response
+0xA1 MaxValueH MaxValueL
+
+Set brightness
+0xA2 brightnessValue
+Response
+0xA2 brightnessValue
+
+GET current counter: 
+0xB0
+Response:
+0xB0 CounterH CounterL
+
+GET current max value:
+0xB1
+Response
+0xB1 MaxValueH MaxValueL
+
+GET current brightness:
+0xB2
+Response
+0xB2 brightnessValue
